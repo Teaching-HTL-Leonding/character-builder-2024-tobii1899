@@ -26,11 +26,11 @@ export class BuilderComponent {
 
   async getImage(): Promise<WebAPIService> {
     const requestBody = {
-      eye: this.eye(),
-      hasHammer: this.hasHammer(),
-      mouth: this.mouth(),
-      rightHand: this.rightHand(),
-      hasTail: this.hasTail()
+      eye: this.eye,
+      hasHammer: this.hasHammer,
+      mouth: this.mouth,
+      rightHand: this.rightHand,
+      hasTail: this.hasTail
     };
 
     const response = await firstValueFrom(
@@ -62,21 +62,7 @@ export class BuilderComponent {
     this.rightHand = response.rightHand;
     this.hasTail = response.hasTail;
 
-    const requestBody = {
-      eye: response.eye,
-      hasHammer: response.hasHammer,
-      mouth: response.mouth,
-      rightHand: response.rightHand,
-      hasTail: response.hasTail
-    };
-
-    const result = await firstValueFrom(
-      this.httpClient.post<WebAPIService>(
-        'http://localhost:5110/build-image-url',
-        requestBody
-      )
-    );
-
+    const result = await this.getImage();
     const image = document.getElementById('image') as HTMLImageElement;
 
     image.src = result.url;
