@@ -6,7 +6,7 @@
         <select [(ngModel)]="eye">
           <option value="NoEye">no eye</option>
           <option value="Open">open</option>
-          <option value="HalOopen">half open</option>
+          <option value="HalfOpen">half open</option>
           <option value="Closed">closed</option>
         </select>
       </div>
@@ -53,5 +53,5 @@
 
 <div id="buttons">
   <button id="build-image" (click)="onBuildImage()">Build Image</button>
-  <button id="feeling-lucky">Feeling lucky...</button>
+  <button id="feeling-lucky" (click)="feelingLucky()">Feeling lucky...</button>
 </div>

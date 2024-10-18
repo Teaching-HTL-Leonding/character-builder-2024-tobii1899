@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { firstValueFrom } from 'rxjs';
 
 interface WebAPIService {
@@ -48,10 +49,37 @@ export class BuilderComponent {
       const image = document.getElementById('image') as HTMLImageElement;
 
       image.src = result.url;
-
-      console.log(image.src)
     } catch (error) {
       console.error('Error building image:', error);
     }
+  }
+
+  async feelingLucky() {
+    const response: any = await this.httpClient.get('http://localhost:5110/get-random-image-options').toPromise();
+    this.eye = response.eye;
+    this.hasHammer = response.hasHammer;
+    this.mouth = response.mouth;
+    this.rightHand = response.rightHand;
+    this.hasTail = response.hasTail;
+
+    const requestBody = {
+      eye: response.eye,
+      hasHammer: response.hasHammer,
+      mouth: response.mouth,
+      rightHand: response.rightHand,
+      hasTail: response.hasTail
+    };
+
+    const result = await firstValueFrom(
+      this.httpClient.post<WebAPIService>(
+        'http://localhost:5110/build-image-url',
+        requestBody
+      )
+    );
+
+    const image = document.getElementById('image') as HTMLImageElement;
+
+    image.src = result.url;
+
   }
 }
