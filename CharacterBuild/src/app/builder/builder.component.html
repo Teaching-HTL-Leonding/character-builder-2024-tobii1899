@@ -1,0 +1,57 @@
+<div id="container">
+  <div id="character">
+    <div id="eye-element">
+      <p>Eye:</p>
+      <div>
+        <select [(ngModel)]="eye">
+          <option value="NoEye">no eye</option>
+          <option value="Open">open</option>
+          <option value="HalfOpen">half open</option>
+          <option value="Closed">closed</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="hammer-element">
+      <input type="checkbox" id="has-hammer" [(ngModel)]="hasHammer" />
+      <p>Has Hammer</p>
+    </div>
+
+    <div id="mouth-element">
+      <p>Mouth:</p>
+      <div>
+        <select [(ngModel)]="mouth">
+          <option value="NoMouth">no mouth</option>
+          <option value="Happy">happy</option>
+          <option value="Normal">normal</option>
+          <option value="Unhappy">unhappy</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="right-hand-element" style="margin-top: 1rem;">
+      <p>Right Hand:</p>
+      <div>
+        <select [(ngModel)]="rightHand">
+          <option value="NoHand">no hand</option>
+          <option value="Normal">normal</option>
+          <option value="Victory">victory</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="tail-element">
+      <input type="checkbox" id="has-tail" [(ngModel)]="hasTail" />
+      <p>Has Tail</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: end; align-items: flex-start; width: 33%;">
+    <img id="image" style="width: 100%; margin-top: 3rem;" />
+  </div>
+</div>
+
+<div id="buttons">
+  <button id="build-image" (click)="onBuildImage()">Build Image</button>
+  <button id="feeling-lucky" (click)="feelingLucky()">Feeling lucky...</button>
+</div>
