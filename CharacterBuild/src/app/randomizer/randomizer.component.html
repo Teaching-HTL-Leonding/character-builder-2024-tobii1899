@@ -1,1 +1,12 @@
-<p>randomizer works!</p>
+<div id="randomizer-container">
+  <div class="button-container">
+    <button class="blue-button" (click)="zoomIn()">➕</button>
+    <button class="blue-button" (click)="zoomOut()">➖</button>
+    <button class="blue-button" (click)="generateRandomImage()" style="color: darkblue">Next</button>
+  </div>
+
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <img id="random-image" [src]="currentImageUrl" [style.width.px]="imageSize" />
+  </div>
+</div>
